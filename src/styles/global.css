@@ -5,11 +5,16 @@
     --color-background: #1a1c1e;
     --color-background-header: #0c0e11;
     --color-background-footer: #0c0e11;
+    --color-background-hover: #333333;
 
     /* 字体颜色 */
     --color-default: #ffffff;
-    --color-logo-primary: #BA8CFF;
-    --color-logo-primary-hover: #3399FF;
+
+    --color-logo: #BA8CFF;
+    --color-logo-hover: #3399FF;
+
+    --color-a: #ffffff;
+    --color-a-hover: #66B2FF;
 
     /* 字体 */
     --font-default: system-ui;
