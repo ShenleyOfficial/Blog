@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+    --color-background: #000000;
+
+    --color-default: #ffffff;
+
+    --font-default: system-ui;
+}
