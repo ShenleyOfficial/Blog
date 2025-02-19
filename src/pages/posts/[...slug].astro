@@ -17,5 +17,74 @@ const { Content } = await render(post);
 ---
 
 <Layout>
-  <div class="flex justify-center items-center"><Content /></div>
+  <article class="container mx-auto px-4 py-8 max-w-3xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-logo mb-4">{post.data.title}</h1>
+      <div class="text-sm text-gray-600 space-x-4">
+        {post.data.createdAt && <span>创建于: {post.data.createdAt}</span>}
+        {post.data.updatedAt && <span>更新于: {post.data.updatedAt}</span>}
+      </div>
+      {post.data.categories && post.data.categories.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {post.data.categories.map((category) => (
+            <span class="px-3 py-1 bg-background-header rounded-full text-sm text-gray-600">
+              {category}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="prose prose-invert max-w-none">
+      <Content />
+    </div>
+  </article>
 </Layout>
+
+<style>
+  .prose {
+    --tw-prose-body: #ffffff;
+    --tw-prose-headings: var(--color-logo);
+    --tw-prose-links: var(--color-a);
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #ffffff;
+    --tw-prose-bullets: #ffffff;
+    --tw-prose-quotes: #ffffff;
+    --tw-prose-code: #ffffff;
+    --tw-prose-hr: #333333;
+    --tw-prose-th-borders: #333333;
+    --tw-prose-td-borders: #333333;
+  }
+
+  .prose :global(a) {
+    text-decoration: none;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-a-hover);
+  }
+
+  .prose :global(img) {
+    margin: 2rem auto;
+    border-radius: 0.5rem;
+  }
+
+  .prose :global(code) {
+    background-color: var(--color-background-header);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  .prose :global(pre) {
+    background-color: var(--color-background-header);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .prose :global(pre code) {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+</style>
