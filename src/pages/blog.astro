@@ -15,6 +15,9 @@ const allPosts = await getCollection("blog");
           url={`/posts/${post.id}/`}
           title={post.data.title}
           description={post.data.description ?? ""}
+          date={post.data.createdAt}
+          updated={post.data.updatedAt}
+          categories={post.data.categories}
         />
       ))}
     </div>

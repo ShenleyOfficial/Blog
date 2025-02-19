@@ -6,16 +6,27 @@ interface Props {
   tags?: string[];
   date?: string;
   updated?: string;
-  imageUrl?: string;
+  categories?: string[];
 }
 
-const { title, url, description } = Astro.props;
+const { title, url, description, date, updated, categories } = Astro.props;
 ---
 
 <article class="flex flex-col items-center py-6">
   <a href={url} class="w-full max-w-3xl bg-background-header rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out p-6 hover:scale-[1.02] hover:bg-background-hover">
     <h2 class="font-bold text-3xl mb-4 text-logo hover:text-logo-hover transition-colors duration-300">{title}</h2>
-    <p class="text-default text-lg leading-relaxed">{description}</p>
+    <div class="mb-4 text-sm text-gray-600">
+      {date && <span>创建于: {date}</span>}
+      {updated && <span class="ml-4">更新于: {updated}</span>}
+    </div>
+    <p class="text-default text-lg leading-relaxed mb-4">{description}</p>
+    {categories && categories.length > 0 && (
+      <div class="flex flex-wrap gap-2">
+        {categories.map((category) => (
+          <span class="px-3 py-1 bg-background rounded-full text-sm text-gray-600">{category}</span>
+        ))}
+      </div>
+    )}
   </a>
 </article>
 
@@ -25,4 +36,3 @@ const { title, url, description } = Astro.props;
     transform-origin: center;
   }
 </style>
-
