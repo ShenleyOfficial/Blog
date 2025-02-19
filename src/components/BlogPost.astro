@@ -1,5 +1,20 @@
 ---
-const { title, url } = Astro.props;
+interface Props {
+  title: string;
+  url: string;
+  description: string;
+  tags?: string[];
+  date?: string;
+  updated?: string;
+  imageUrl?: string;
+}
+
+const { title, url, description } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<article class="flex flex-col items-center">
+  <a href={url}>
+    <h2 class="font-bold">{title}</h2>
+    <p>{description}</p>
+  </a>
+</article>
