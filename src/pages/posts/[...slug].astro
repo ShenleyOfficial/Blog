@@ -54,7 +54,23 @@ const { Content } = await render(post);
     --tw-prose-th-borders: #333333;
     --tw-prose-td-borders: #333333;
   }
-
+  .prose :global(h1),
+  .prose :global(h2),
+  .prose :global(h3),
+  .prose :global(h4),
+  .prose :global(h5),
+  .prose :global(h6) {
+    color: var(--color-logo);
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  .prose :global(h1) { font-size: 2em; }
+  .prose :global(h2) { font-size: 1.5em; }
+  .prose :global(h3) { font-size: 1.25em; }
+  .prose :global(h4) { font-size: 1em; }
+  .prose :global(h5) { font-size: 0.875em; }
+  .prose :global(h6) { font-size: 0.85em; }
   .prose :global(a) {
     text-decoration: none;
   }
