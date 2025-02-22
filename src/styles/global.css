@@ -1,18 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #BA8CFF;
-    --color-primary-hover: #D4B3FF;
+    /* 主要颜色 - 活力橙色 */
+    --color-primary: #FF9F87;
+    /* 珊瑚粉/浅橙色，活泼、温暖 */
+    --color-primary-hover: #ff8566;
+    /* 加深，用于 hover 状态 */
 
-    --color-secondary: #4A4A4A;
-    --color-secondary-hover: #666666;
+    /* 次要颜色 - 深邃蓝 */
+    --color-secondary: #29314F;
+    /* 深蓝色，稳重、专业 */
+    --color-secondary-hover: #3C486B;
+    /*稍浅一些，用于 hover 或 active*/
 
-    --color-accent: #FF9F87;
-    --color-accent-hover: #FFB3A3;
+    /* 强调色 - 亮黄色 */
+    --color-accent: #F7D060;
+    /* 亮黄色，醒目、充满活力 */
+    --color-accent-hover: #F9E795;
+    /*更浅更柔和*/
 
-    --color-text: #FFFFFF;
+    /* 文本颜色 */
+    --color-text: #E0E0E0;
+    /* 浅灰，接近白色，在深色背景上有良好的对比度 */
     --color-text-secondary: #A0A0A0;
-   
-    --color-background: #1a1c1e;
-    --color-background-secondary: #0c0e11;
+    /* 中灰色，用于副标题、注释等 */
+    --color-text-on-primary: #29314f;
+    /*深蓝色, 在主色上的文字颜色*/
+    --color-text-on-accent: #29314f;
+    /*深蓝色, 在强调色上的文字颜色*/
+
+    /* 背景颜色 */
+    --color-background: #121212;
+    /* 极深灰色，近乎黑色，主背景色 */
+    --color-background-secondary: #1E1E1E;
+    /* 稍浅的深灰色，用于卡片、侧边栏等 */
+    --color-background-tertiary: #252525;
+    /* 比 --color-background-secondary 浅，用于不那么重要的区域 */
+    --color-background-inverse: #ededed;
+    /*与主背景相反的颜色, 用作强调*/
 }

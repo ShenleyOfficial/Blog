@@ -3,8 +3,8 @@ interface Props {
   url: string;
   title: string;
   description?: string;
-  createdDate?: Date;
-  updatedDate?: Date;
+  createdDate: Date;
+  updatedDate: Date;
   author?: string;
   tags?: string[];
   category?: string;
@@ -12,6 +12,8 @@ interface Props {
 
 const { title, url, description, updatedDate, createdDate, category, author } =
   Astro.props;
+
+import { formatDate } from "../utils/formatDate";
 ---
 
 <article class="flex flex-col items-center py-6">
@@ -25,8 +27,8 @@ const { title, url, description, updatedDate, createdDate, category, author } =
       {title}
     </h2>
     <div class="mb-4 text-sm text-text-secondary">
-      <span>创建于: {createdDate}</span>
-      <span class="ml-4">更新于: {updatedDate}</span>
+      <span>创建于: {formatDate(createdDate)}</span>
+      <span class="ml-4">更新于: {formatDate(updatedDate)}</span>
       {author && <span class="ml-4">作者: {author}</span>}
     </div>
     <p class="text-lg leading-relaxed mb-4 text-text">{description}</p>

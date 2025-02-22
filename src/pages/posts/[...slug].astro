@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
-
+import { formatDate } from "../../utils/formatDate";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -14,6 +14,8 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const formattedCreateDate = formatDate(post.data.createdDate);
+const formattedUpdateDate = formatDate(post.data.updatedDate);
 ---
 
 <Layout>
@@ -21,8 +23,8 @@ const { Content } = await render(post);
     <header class="mb-8">
       <h1 class="text-4xl font-bold text-accent mb-4">{post.data.title}</h1>
       <div class="text-sm text-text-secondary space-x-4">
-        {post.data.createdDate && <span>创建于: {post.data.createdDate}</span>}
-        {post.data.updatedDate && <span>更新于: {post.data.updatedDate}</span>}
+        {post.data.createdDate && <span>创建于: {formattedCreateDate}</span>}
+        {post.data.updatedDate && <span>更新于: {formattedUpdateDate}</span>}
         {post.data.author && <span>作者: {post.data.author}</span>}
       </div>
       {post.data.category && (
