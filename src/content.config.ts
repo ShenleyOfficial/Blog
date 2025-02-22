@@ -9,8 +9,8 @@ const blog = defineCollection({
     description: z.string().optional(),
     createdDate: z.date(),
     updatedDate: z.date(),
-    author: z.string().optional(),
-    category: z.string().optional(),
+    author: z.string().optional().default("Shenley"),
+    category: z.string().optional().default("未分类"),
     tags: z.array(z.string()).optional(),
   }),
 });
