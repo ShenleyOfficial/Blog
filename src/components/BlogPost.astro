@@ -1,15 +1,17 @@
 ---
 interface Props {
-  title: string;
   url: string;
-  description: string;
+  title: string;
+  description?: string;
+  createdDate?: Date;
+  updatedDate?: Date;
+  author?: string;
   tags?: string[];
-  date?: string;
-  updated?: string;
-  categories?: string;
+  category?: string;
 }
 
-const { title, url, description, date, updated, categories } = Astro.props;
+const { title, url, description, updatedDate, createdDate, category, author } =
+  Astro.props;
 ---
 
 <article class="flex flex-col items-center py-6">
@@ -23,15 +25,16 @@ const { title, url, description, date, updated, categories } = Astro.props;
       {title}
     </h2>
     <div class="mb-4 text-sm text-text-secondary">
-      {date && <span>创建于: {date}</span>}
-      {updated && <span class="ml-4">更新于: {updated}</span>}
+      <span>创建于: {createdDate}</span>
+      <span class="ml-4">更新于: {updatedDate}</span>
+      {author && <span class="ml-4">作者: {author}</span>}
     </div>
     <p class="text-lg leading-relaxed mb-4 text-text">{description}</p>
     {
-      categories && categories.length > 0 && (
+      (
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1 bg-background rounded-full text-text-secondary">
-            {categories}
+            {category}
           </span>
         </div>
       )
