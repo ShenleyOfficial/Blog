@@ -10,7 +10,7 @@ const blog = defineCollection({
     createdAt: z.string().optional(),
     updatedAt: z.string().optional(),
     author: z.string().optional(),
-    categories: z.array(z.string()).optional(),
+    categories: z.string().optional(),
     tags: z.array(z.string()).optional(),
   }),
 });
