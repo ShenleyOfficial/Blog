@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+    --color-accent: #BA8CFF;
+    --color-accent-hover: #9866FF;
     /* 背景颜色 */
     --color-background: #1a1c1e;
     --color-background-header: #0c0e11;
