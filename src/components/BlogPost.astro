@@ -26,7 +26,7 @@ const { title, url, description, date, updated, categories } = Astro.props;
       {date && <span>创建于: {date}</span>}
       {updated && <span class="ml-4">更新于: {updated}</span>}
     </div>
-    <p class="text-default text-lg leading-relaxed mb-4">{description}</p>
+    <p class="text-lg leading-relaxed mb-4">{description}</p>
     {
       categories && categories.length > 0 && (
         <div class="flex flex-wrap gap-2">

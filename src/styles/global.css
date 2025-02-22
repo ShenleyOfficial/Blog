@@ -3,16 +3,10 @@
 @theme {
     --color-accent: #BA8CFF;
     --color-accent-hover: #9866FF;
-    /* 背景颜色 */
+   
     --color-background: #1a1c1e;
     --color-background-header: #0c0e11;
     --color-background-footer: #0c0e11;
     
     --color-background-hover: #333333;
-
-    /* 字体颜色 */
-    --color-default: #ffffff;
-
-    --color-a: #ffffff;
-    --color-a-hover: #66B2FF;
 }
