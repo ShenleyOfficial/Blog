@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-    --color-accent: #BA8CFF;
-    --color-accent-hover: #9866FF;
+    --color-primary: #BA8CFF;
+    --color-primary-hover: #D4B3FF;
+
+    --color-secondary: #4A4A4A;
+    --color-secondary-hover: #666666;
+
+    --color-accent: #FF9F87;
+    --color-accent-hover: #FFB3A3;
+
+    --color-text: #FFFFFF;
+    --color-text-secondary: #A0A0A0;
    
     --color-background: #1a1c1e;
     --color-background-secondary: #0c0e11;
-    
-    --color-nav-item-hover: #333333;
 }
-
-/* --color-primary：品牌主色 --color-secondary：品牌次要颜色 --color-accent：强调色 --color-text：主要文本颜色 --color-text-secondary：次要文本颜色 --color-background：主要背景色 --color-background-secondary：次要背景色 --color-success：成功状态颜色 --color-warning：警告状态颜色 --color-error：错误状态颜色 */
