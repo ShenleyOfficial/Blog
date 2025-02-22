@@ -24,15 +24,15 @@ const { Content } = await render(post);
         {post.data.createdAt && <span>创建于: {post.data.createdAt}</span>}
         {post.data.updatedAt && <span>更新于: {post.data.updatedAt}</span>}
       </div>
-      {post.data.categories && post.data.categories.length > 0 && (
-        <div class="flex flex-wrap gap-2 mt-4">
-          {post.data.categories.map((category) => (
+      {
+        post.data.categories && post.data.categories.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
             <span class="px-3 py-1 bg-background-header rounded-full text-sm text-gray-600">
-              {category}
+              {post.data.categories}
             </span>
-          ))}
-        </div>
-      )}
+          </div>
+        )
+      }
     </header>
     <div class="prose prose-invert max-w-none">
       <Content />
@@ -43,7 +43,7 @@ const { Content } = await render(post);
 <style>
   .prose {
     --tw-prose-body: #ffffff;
-    --tw-prose-headings: var(--color-logo);
+    --tw-prose-headings: #ba8cff;
     --tw-prose-links: var(--color-a);
     --tw-prose-bold: #ffffff;
     --tw-prose-counters: #ffffff;
@@ -60,17 +60,29 @@ const { Content } = await render(post);
   .prose :global(h4),
   .prose :global(h5),
   .prose :global(h6) {
-    color: var(--color-logo);
+    color: #ba8cff;
     font-weight: bold;
     margin-top: 2em;
     margin-bottom: 1em;
   }
-  .prose :global(h1) { font-size: 2em; }
-  .prose :global(h2) { font-size: 1.5em; }
-  .prose :global(h3) { font-size: 1.25em; }
-  .prose :global(h4) { font-size: 1em; }
-  .prose :global(h5) { font-size: 0.875em; }
-  .prose :global(h6) { font-size: 0.85em; }
+  .prose :global(h1) {
+    font-size: 2em;
+  }
+  .prose :global(h2) {
+    font-size: 1.5em;
+  }
+  .prose :global(h3) {
+    font-size: 1.25em;
+  }
+  .prose :global(h4) {
+    font-size: 1em;
+  }
+  .prose :global(h5) {
+    font-size: 0.875em;
+  }
+  .prose :global(h6) {
+    font-size: 0.85em;
+  }
   .prose :global(a) {
     text-decoration: none;
   }
