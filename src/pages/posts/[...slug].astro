@@ -20,6 +20,7 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
 
 <Layout>
   <article class="container mx-auto px-4 py-8 max-w-3xl">
+    <h1 class="text-primary font-bold text-3xl">{post.data.title}</h1>
     <div class="text-sm text-text-secondary space-x-4">
       <span>创建于: {formattedCreateDate}</span>
       <span>更新于: {formattedUpdateDate}</span>
@@ -35,8 +36,8 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
 <style>
   .prose {
     --tw-prose-body: #ffffff;
-    --tw-prose-headings: var(--color-logo);
-    --tw-prose-links: var(--color-a);
+    --tw-prose-headings: var(--color-primary);
+    --tw-prose-links: var(--color-accent);
     --tw-prose-bold: #ffffff;
     --tw-prose-counters: #ffffff;
     --tw-prose-bullets: #ffffff;
@@ -80,7 +81,7 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
   }
 
   .prose :global(a:hover) {
-    color: var(--color-a-hover);
+    color: var(--color-accent-hover);
   }
 
   .prose :global(img) {
@@ -89,14 +90,14 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
   }
 
   .prose :global(code) {
-    background-color: var(--color-background-header);
+    background-color: var(--color-background-secondary);
     padding: 0.2em 0.4em;
     border-radius: 0.25rem;
     font-size: 0.875em;
   }
 
   .prose :global(pre) {
-    background-color: var(--color-background-header);
+    background-color: var(--color-background-secondary);
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
