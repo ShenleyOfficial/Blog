@@ -1,39 +1,13 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
 <nav class="flex justify-center items-center">
   <ul class="list-none flex">
-    <li>
-      <a
-        href="/"
-        class="mx-2 text-text hover:text-primary hover:bg-background-secondary px-4 py-2 rounded transition duration-300 ease-in-out"
-        >主页</a
-      >
-    </li>
-    <li>
-      <a
-        href="/blog"
-        class="mx-2 text-text hover:text-primary hover:bg-background-secondary px-4 py-2 rounded transition duration-300 ease-in-out"
-        >博客</a
-      >
-    </li>
-    <li>
-      <a
-        href="/categories"
-        class="mx-2 text-text hover:text-primary hover:bg-background-secondary px-4 py-2 rounded transition duration-300 ease-in-out"
-        >分类</a
-      >
-    </li>
-    <li>
-      <a
-        href="/tags"
-        class="mx-2 text-text hover:text-primary hover:bg-background-secondary px-4 py-2 rounded transition duration-300 ease-in-out"
-        >标签</a
-      >
-    </li>
-    <li>
-      <a
-        href="/about"
-        class="mx-2 text-text hover:text-primary hover:bg-background-secondary px-4 py-2 rounded transition duration-300 ease-in-out"
-        >关于</a
-      >
-    </li>
+    <NavLink href="/" text="主页" />
+    <NavLink href="/blog" text="博客" />
+    <NavLink href="/categories" text="分类" />
+    <NavLink href="/tags" text="标签" />
+    <NavLink href="/about" text="关于" />
   </ul>
 </nav>
