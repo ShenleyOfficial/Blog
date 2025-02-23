@@ -3,5 +3,27 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-
+  <div class="flex items-center justify-center min-h-[60vh]">
+    <div class="text-center animate-fade-in">
+      <h1 class="text-4xl font-bold text-primary mb-4">🚧 网站建设中 🚧</h1>
+      <p class="text-text-secondary text-lg">敬请期待...</p>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
