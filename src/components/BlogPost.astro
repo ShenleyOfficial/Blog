@@ -31,11 +31,11 @@ import { formatDate } from "../utils/formatDate";
       <span class="ml-4">更新于: {formatDate(updatedDate)}</span>
       {author && <span class="ml-4">作者: {author}</span>}
     </div>
-    <p class="text-lg leading-relaxed mb-4 text-text">{description}</p>
+    <p class="text-lg leading-relaxed mb-4 text-text dark:text-text-dark">{description}</p>
     {
       (
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 bg-background dark:bg-background-dark rounded-full text-text-secondary">
+          <span class="px-3 py-1 bg-background dark:bg-background-dark rounded-full text-text-secondary dark:text-text-secondary-dark">
             {category}
           </span>
         </div>
