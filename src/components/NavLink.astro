@@ -1,17 +1,68 @@
 ---
+// src/components/NavLink.astro
 interface Props {
   href: string;
   text: string;
+  icon?: string; // Font Awesome 类名，或其他图标库的标识符
+  iconPosition?: "before" | "after"; // 图标位置，可选，默认为 'before'
+  isImage?: boolean; // 是否是图片图标，可选，默认为false
+  alt?: string; // 图片alt，可选
 }
 
-const { href, text } = Astro.props;
+const {
+  href,
+  text,
+  icon,
+  iconPosition = "before",
+  isImage = false,
+  alt = "",
+} = Astro.props;
 ---
 
 <li>
   <a
     href={href}
-    class="text-secondary hover:text-secondary-light hover:bg-background-secondary-hover dark:text-secondary-dark dark:bg-background-secondary-hover-dark px-4 py-2 rounded transition duration-300 ease-in-out"
+    class="text-secondary hover:text-secondary-light hover:bg-background-secondary-hover dark:text-secondary-dark dark:bg-background-secondary-hover-dark px-4 py-2 rounded transition duration-300 ease-in-out flex items-center"
   >
-    {text}
+    {
+      iconPosition === "before" && icon && !isImage && (
+        <i class={icon} aria-hidden="true" />
+      )
+    }
+    {
+      iconPosition === "before" && icon && isImage && (
+        <img src={icon} alt={alt} />
+      )
+    }
+    <span>{text}</span>
+    {
+      iconPosition === "after" && icon && !isImage && (
+        <i class={icon} aria-hidden="true" />
+      )
+    }
+    {
+      iconPosition === "after" && icon && isImage && (
+        <img src={icon} alt={alt} />
+      )
+    }
   </a>
 </li>
+
+<style>
+  /*  添加图标和文本间距 */
+  a > i,
+  a > img {
+    margin-right: 0.5rem; /* 默认图标在前面，所以添加右边距 */
+  }
+
+  /* 如果图标在后面，则需要调整边距 */
+  [data-icon-position="after"] > i,
+  [data-icon-position="after"] > img {
+    margin-right: 0; /* 清除默认右边距 */
+    margin-left: 0.5rem; /* 添加左边距 */
+  }
+  img {
+    width: 20px; /*按需调整*/
+    height: 20px;
+  }
+</style>

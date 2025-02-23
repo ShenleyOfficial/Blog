@@ -9,9 +9,9 @@
   --color-primary-dark: #0039cb;
 
   /* 辅助色 (黄色/橙色系) */
-  --color-secondary: #ffcc80;  /* 柔和的橙色 */
+  --color-secondary: #ffa726;  /* 柔和的橙色 */
   --color-secondary-light: #ffecb3; /* 更亮的橙色 */
-  --color-secondary-dark: #ffa726; /* 更暗的橙色 */
+  --color-secondary-dark: #ffcc80; /* 更暗的橙色 */
 
   /* 强调色 (深蓝色，与主色调协调) */
   --color-accent: #1a237e;  /* 深靛蓝色 */
