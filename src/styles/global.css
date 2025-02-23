@@ -1,20 +1,31 @@
 @import "tailwindcss";
 
 @theme {
+  /* 主色 */
   --color-primary: #2962ff;
-  --color-primary-light: #638fff;
+  --color-primary-light: #73a5ff;
   --color-primary-dark: #0039cb;
-  --color-secondary: #6c757d;
-  --color-secondary-light: #97a1ab;
-  --color-secondary-dark: #40484f;
-  --color-accent: #ff9800;
-  --color-accent-light: #ffc947;
-  --color-accent-dark: #c66900;
+
+  /* 辅助色 (黄色/橙色系) */
+  --color-secondary: #ffcc80;  /* 柔和的橙色 */
+  --color-secondary-light: #ffecb3; /* 更亮的橙色 */
+  --color-secondary-dark: #ffa726; /* 更暗的橙色 */
+
+  /* 强调色 (深蓝色，与主色调协调) */
+  --color-accent: #1a237e;  /* 深靛蓝色 */
+  --color-accent-light: #534bae; /* 稍亮的靛蓝色 */
+  --color-accent-dark: #000051; /* 非常深的靛蓝色 */
+
+  /* 文本颜色 */
   --color-text: #212529;
   --color-text-dark: #ffffff;
-  --color-text-secondary: #6c757d;
-  --color-text-secondary-dark: #ced4da;
-  --color-background: #ffffff; 
+  --color-text-secondary: #757575; /* 中性灰，用于次要文本 */
+  --color-text-secondary-dark: #bdbdbd;
+
+  /* 背景颜色 */
+  --color-background: #ffffff;
+  --color-background-hover: #f5f5f5;
+  --color-background-hover-dark: #333333;
   --color-background-dark: #121212;
   --color-background-secondary: #f0f0f0;
   --color-background-secondary-dark: #1e1e1e;
