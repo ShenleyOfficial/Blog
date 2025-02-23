@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const allPosts = await getCollection("blog");
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags || []))];
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-primary mb-8 text-center">文章标签</h1>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {allTags.map((tag) => {
+        const postsWithTag = allPosts.filter(
+          (post) => post.data.tags?.includes(tag)
+        );
+        return (
+          <div class="bg-background-secondary rounded-lg p-6 shadow-lg hover:shadow-xl transition duration-300">
+            <h2 class="text-2xl font-bold text-accent mb-4">{tag}</h2>
+            <p class="text-text-secondary mb-4">
+              共 {postsWithTag.length} 篇文章
+            </p>
+            <ul class="space-y-2">
+              {postsWithTag.map((post) => (
+                <li>
+                  <a
+                    href={`/posts/${post.id}/`}
+                    class="text-text hover:text-primary transition duration-300"
+                  >
+                    {post.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</Layout>
