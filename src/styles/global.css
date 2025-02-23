@@ -1,41 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-    /* 主要颜色 - 活力橙色 */
-    --color-primary: #FF9F87;
-    /* 珊瑚粉/浅橙色，活泼、温暖 */
-    --color-primary-hover: #ff8566;
-    /* 加深，用于 hover 状态 */
+  /* 
+    主要颜色 (Primary Color)
+    通常用于品牌标识、主要操作按钮、链接等。
+    这里选择一种柔和、稳重的蓝色，适合博客的阅读氛围。
+  */
+  --color-primary: #2962ff; /* 主色调 - 较深的蓝色 */
+  --color-primary-light: #638fff; /* 用于悬停、激活状态，或次要按钮 */
+  --color-primary-dark: #0039cb; /* 用于深色模式，或按钮按下状态 */
 
-    /* 次要颜色 - 深邃蓝 */
-    --color-secondary: #29314F;
-    /* 深蓝色，稳重、专业 */
-    --color-secondary-hover: #3C486B;
-    /*稍浅一些，用于 hover 或 active*/
+  /* 
+    次要颜色 (Secondary Color)
+    用于辅助主要颜色，例如二级标题、不那么重要的按钮、标签等。
+    这里选择一种中性偏冷的灰色，与主色调形成对比，又不至于过于突兀。
+  */
+  --color-secondary: #6c757d; /* 中性灰 */
+  --color-secondary-light: #97a1ab; /* 用于悬停状态或较浅的背景 */
+  --color-secondary-dark: #40484f; /* 用于深色模式 */
 
-    /* 强调色 - 亮黄色 */
-    --color-accent: #F7D060;
-    /* 亮黄色，醒目、充满活力 */
-    --color-accent-hover: #F9E795;
-    /*更浅更柔和*/
+  /* 
+    强调色 (Accent Color)
+    用于吸引注意力的元素，例如通知、警告、高亮文本等。
+    这里选择一种鲜明的橙色，与主色调和次要颜色形成对比。
+    谨慎使用，避免过度使用。
+  */
+  --color-accent: #ff9800; /* 橙色 */
+  --color-accent-light: #ffc947; /* 用于悬停状态或较柔和的强调 */
+  --color-accent-dark: #c66900; /* 用于深色模式 */
 
-    /* 文本颜色 */
-    --color-text: #E0E0E0;
-    /* 浅灰，接近白色，在深色背景上有良好的对比度 */
-    --color-text-secondary: #A0A0A0;
-    /* 中灰色，用于副标题、注释等 */
-    --color-text-on-primary: #29314f;
-    /*深蓝色, 在主色上的文字颜色*/
-    --color-text-on-accent: #29314f;
-    /*深蓝色, 在强调色上的文字颜色*/
+  /* 
+    文本颜色 (Text Color)
+    用于正文、标题等。
+    选择接近黑色的深灰色，提供良好的可读性，同时减轻眼睛疲劳。
+  */
+  --color-text: #212529; /* 主要文本颜色 - 深灰色 */
+  --color-text-light: #97a1ab; /*用不上*/
+  --color-text-dark: #ffffff; /* 深色模式下的文本颜色 - 白色 */
+  --color-text-secondary: #6c757d; /* 次要文本颜色 - 中性灰，用于副标题、注释、元数据等 */
+  --color-text-secondary-light: #97a1ab; /*用不上*/
+  --color-text-secondary-dark: #ced4da; /*深色模式下的,用于副标题、注释、元数据等*/
 
-    /* 背景颜色 */
-    --color-background: #121212;
-    /* 极深灰色，近乎黑色，主背景色 */
-    --color-background-secondary: #1E1E1E;
-    /* 稍浅的深灰色，用于卡片、侧边栏等 */
-    --color-background-tertiary: #252525;
-    /* 比 --color-background-secondary 浅，用于不那么重要的区域 */
-    --color-background-inverse: #ededed;
-    /*与主背景相反的颜色, 用作强调*/
+  /* 
+    背景颜色 (Background Color)
+    用于页面背景、卡片背景等。
+  */
+  --color-background: #ffffff; /* 主要背景颜色 - 白色 */
+  --color-background-light: #f8f9fa; /* 更浅的背景，用于卡片、模态框、侧边栏等 */
+  --color-background-dark: #121212; /* 深色模式下的主要背景颜色 - 接近黑色的深灰色 */
+  --color-background-secondary: #f0f0f0; /* 次要背景颜色 - 浅灰色，用于区分不同内容区域 */
+  --color-background-secondary-light: #f8f9fa; /*用不上*/
+  --color-background-secondary-dark: #1e1e1e; /* 深色模式下的次要背景 - 比主背景略亮 */
 }
