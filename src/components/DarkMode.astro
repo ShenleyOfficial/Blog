@@ -1,9 +1,13 @@
+---
+import moonIcon from "../assets/moon-solid.svg";
+---
+
 <button
   id="darkModeToggle"
   aria-label="切换深色模式"
   class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-gray-500 transition-colors duration-300 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
 >
-  <span id="themeText">浅</span>
+  <img id="themeIcon" src={moonIcon.src} alt="主题图标" class="w-5 h-5" />
 </button>
 
 <script is:inline>
@@ -21,24 +25,24 @@
       document.documentElement.classList.remove("dark");
     }
 
-    // 设置初始文字
-    const themeText = document.getElementById("themeText");
-    themeText.textContent = isDark ? "深" : "浅";
+    // 设置初始图标
+    const themeIcon = document.getElementById("themeIcon");
+    themeIcon.src = isDark ? "/src/assets/sun-solid.svg" : "/src/assets/moon-solid.svg";
   })();
 
   // 点击切换逻辑
   const darkModeToggle = document.getElementById("darkModeToggle");
-  const themeText = document.getElementById("themeText");
+  const themeIcon = document.getElementById("themeIcon");
 
   function toggleDarkMode() {
     const isDark = document.documentElement.classList.contains("dark");
     if (isDark) {
       document.documentElement.classList.remove("dark");
-      themeText.textContent = "浅";
+      themeIcon.src = "/src/assets/moon-solid.svg";
       localStorage.setItem("theme", "light");
     } else {
       document.documentElement.classList.add("dark");
-      themeText.textContent = "深";
+      themeIcon.src = "/src/assets/sun-solid.svg";
       localStorage.setItem("theme", "dark");
     }
   }
@@ -47,18 +51,17 @@
 </script>
 
 <style>
-  /* 确保按钮和文字样式一致 */
   #darkModeToggle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
   }
-  .dark #darkModeToggle {
-    color: #fff;
+  #themeIcon {
+    transition: transform 0.3s ease;
+  }
+  #darkModeToggle:hover #themeIcon {
+    transform: rotate(360deg);
   }
 </style>
