@@ -15,7 +15,7 @@ let isMenuOpen = false;
     isOpen={isMenuOpen}
     onClick="document.querySelector('.nav-links').classList.toggle('hidden');"
   />
-  <ul class="nav-links list-none flex lg:flex-row flex-col lg:relative absolute top-full left-0 w-full lg:w-auto bg-background dark:bg-background-dark lg:bg-transparent lg:dark:bg-transparent hidden lg:flex">
+  <ul class="nav-links list-none lg:flex-row flex-col lg:relative absolute top-full left-0 w-full lg:w-auto bg-background dark:bg-background-dark lg:bg-transparent lg:dark:bg-transparent hidden lg:flex">
     <NavLink href="/" text="主页" icon={houseIcon} />
     <NavLink href="/posts" text="博客" icon={listIcon} />
     <NavLink href="/categories" text="分类" icon={folderIcon} />

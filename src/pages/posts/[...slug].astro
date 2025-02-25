@@ -35,17 +35,30 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
 
 <style>
   .prose {
-    --tw-prose-body: #ffffff;
+    --tw-prose-body: var(--color-text);
     --tw-prose-headings: var(--color-primary);
-    --tw-prose-links: var(--color-accent);
-    --tw-prose-bold: #ffffff;
-    --tw-prose-counters: #ffffff;
-    --tw-prose-bullets: #ffffff;
-    --tw-prose-quotes: #ffffff;
-    --tw-prose-code: #ffffff;
-    --tw-prose-hr: #333333;
-    --tw-prose-th-borders: #333333;
-    --tw-prose-td-borders: #333333;
+    --tw-prose-links: var(--color-text-link);
+    --tw-prose-bold: var(--color-text);
+    --tw-prose-counters: var(--color-text-secondary);
+    --tw-prose-bullets: var(--color-text-secondary);
+    --tw-prose-quotes: var(--color-text-secondary);
+    --tw-prose-code: var(--color-text);
+    --tw-prose-hr: var(--color-background-secondary);
+    --tw-prose-th-borders: var(--color-background-secondary);
+    --tw-prose-td-borders: var(--color-background-secondary);
+  }
+  .dark .prose {
+    --tw-prose-body: var(--color-text-dark);
+    --tw-prose-headings: var(--color-primary-light);
+    --tw-prose-links: var(--color-text-link-dark);
+    --tw-prose-bold: var(--color-text-dark);
+    --tw-prose-counters: var(--color-text-secondary-dark);
+    --tw-prose-bullets: var(--color-text-secondary-dark);
+    --tw-prose-quotes: var(--color-text-secondary-dark);
+    --tw-prose-code: var(--color-text-dark);
+    --tw-prose-hr: var(--color-background-secondary-dark);
+    --tw-prose-th-borders: var(--color-background-secondary-dark);
+    --tw-prose-td-borders: var(--color-background-secondary-dark);
   }
   .prose :global(h1),
   .prose :global(h2),
@@ -58,54 +71,74 @@ const formattedUpdateDate = formatDate(post.data.updatedDate);
     margin-top: 2em;
     margin-bottom: 1em;
   }
-  .prose :global(h1) {
-    font-size: 2em;
+  .dark .prose :global(h1),
+  .dark .prose :global(h2),
+  .dark .prose :global(h3),
+  .dark .prose :global(h4),
+  .dark .prose :global(h5),
+  .dark .prose :global(h6) {
+    color: var(--color-primary-light);
   }
-  .prose :global(h2) {
-    font-size: 1.5em;
-  }
-  .prose :global(h3) {
-    font-size: 1.25em;
-  }
-  .prose :global(h4) {
-    font-size: 1em;
-  }
-  .prose :global(h5) {
-    font-size: 0.875em;
-  }
-  .prose :global(h6) {
-    font-size: 0.85em;
-  }
+  .prose :global(h1) { font-size: 2em; }
+  .prose :global(h2) { font-size: 1.5em; }
+  .prose :global(h3) { font-size: 1.25em; }
+  .prose :global(h4) { font-size: 1em; }
+  .prose :global(h5) { font-size: 0.875em; }
+  .prose :global(h6) { font-size: 0.85em; }
   .prose :global(a) {
+    color: var(--color-text-link);
     text-decoration: none;
+    transition: color 0.2s ease;
+    target: _blank;
+    rel: noopener noreferrer;
   }
-
+  .dark .prose :global(a) {
+    color: var(--color-text-link-dark);
+  }
   .prose :global(a:hover) {
-    color: var(--color-accent-hover);
+    color: var(--color-primary-light);
+    text-decoration: underline;
   }
-
   .prose :global(img) {
     margin: 2rem auto;
     border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-
   .prose :global(code) {
     background-color: var(--color-background-secondary);
+    color: var(--color-text);
     padding: 0.2em 0.4em;
     border-radius: 0.25rem;
     font-size: 0.875em;
   }
-
+  .dark .prose :global(code) {
+    background-color: var(--color-background-secondary-dark);
+    color: var(--color-text-dark);
+  }
   .prose :global(pre) {
     background-color: var(--color-background-secondary);
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 0.5rem;
     overflow-x: auto;
+    margin: 1.5rem 0;
   }
-
+  .dark .prose :global(pre) {
+    background-color: var(--color-background-secondary-dark);
+  }
   .prose :global(pre code) {
     background-color: transparent;
     padding: 0;
     border-radius: 0;
+    color: inherit;
+  }
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+  .dark .prose :global(blockquote) {
+    color: var(--color-text-secondary-dark);
   }
 </style>
