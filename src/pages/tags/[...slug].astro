@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags || []))];
+
+  return allTags.map((tag) => {
+    const postsWithTag = allPosts.filter((post) => post.data.tags?.includes(tag));
+    return {
+      params: { slug: tag },
+      props: { tag, posts: postsWithTag },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-primary dark:text-primary-dark mb-8 text-center">标签：{tag}</h1>
+    <div class="bg-background-secondary dark:bg-background-secondary-dark rounded-lg p-6 shadow-lg">
+      <p class="text-text-secondary dark:text-text-secondary-dark mb-4">
+        共 {posts.length} 篇文章
+      </p>
+      <ul class="space-y-4">
+        {posts.map((post) => (
+          <li>
+            <a
+              href={`/posts/${post.id}/`}
+              class="text-text dark:text-text-dark hover:text-primary transition duration-300"
+            >
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Layout>
