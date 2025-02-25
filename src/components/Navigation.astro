@@ -1,13 +1,18 @@
 ---
 import NavLink from "./NavLink.astro";
+import houseIcon from "../assets/house-solid.svg";
+import listIcon from "../assets/list-solid.svg";
+import folderIcon from "../assets/folder-open-solid.svg";
+import tagsIcon from "../assets/tags-solid.svg";
+import infoIcon from "../assets/circle-info-solid.svg";
 ---
 
 <nav class="flex justify-center items-center">
   <ul class="list-none flex">
-    <NavLink href="/" text="主页" icon="fa-solid fa-home" />
-    <NavLink href="/posts" text="博客" icon="fa-solid fa-list" />
-    <NavLink href="/categories" text="分类" icon="fa-solid fa-folder-open" />
-    <NavLink href="/tags" text="标签" icon="fa-solid fa-tags" />
-    <NavLink href="/about" text="关于" icon="fa-solid fa-circle-info" />
+    <NavLink href="/" text="主页" icon={houseIcon} />
+    <NavLink href="/posts" text="博客" icon={listIcon} />
+    <NavLink href="/categories" text="分类" icon={folderIcon} />
+    <NavLink href="/tags" text="标签" icon={tagsIcon} />
+    <NavLink href="/about" text="关于" icon={infoIcon} />
   </ul>
 </nav>

@@ -1,12 +1,13 @@
 ---
 // src/components/NavLink.astro
+
 interface Props {
   href: string;
   text: string;
-  icon?: string; // Font Awesome 类名，或其他图标库的标识符
-  iconPosition?: "before" | "after"; // 图标位置，可选，默认为 'before'
-  isImage?: boolean; // 是否是图片图标，可选，默认为false
-  alt?: string; // 图片alt，可选
+  icon?: string | ImageMetadata; // 支持字符串路径或图片元数据
+  iconPosition?: "before" | "after";
+  isImage?: boolean;
+  alt?: string;
 }
 
 const {
@@ -14,7 +15,7 @@ const {
   text,
   icon,
   iconPosition = "before",
-  isImage = false,
+  isImage = true, // 默认值改为true，因为我们现在主要使用SVG图片
   alt = "",
 } = Astro.props;
 ---
@@ -23,26 +24,17 @@ const {
   <a
     href={href}
     class="text-text hover:text-text-light hover:bg-background-hover dark:text-text-dark dark:hover:text-text-dark dark:hover:bg-background-hover-dark px-4 py-2 mx-2 rounded transition duration-300 ease-in-out flex items-center"
+    data-icon-position={iconPosition}
   >
     {
-      iconPosition === "before" && icon && !isImage && (
-        <i class={icon} aria-hidden="true" />
-      )
-    }
-    {
       iconPosition === "before" && icon && isImage && (
-        <img src={icon} alt={alt} />
+        <img src={typeof icon === "string" ? icon : icon.src} alt={alt} />
       )
     }
     <span>{text}</span>
     {
-      iconPosition === "after" && icon && !isImage && (
-        <i class={icon} aria-hidden="true" />
-      )
-    }
-    {
       iconPosition === "after" && icon && isImage && (
-        <img src={icon} alt={alt} />
+        <img src={typeof icon === "string" ? icon : icon.src} alt={alt} />
       )
     }
   </a>
@@ -50,13 +42,11 @@ const {
 
 <style>
   /*  添加图标和文本间距 */
-  a > i,
   a > img {
     margin-right: 0.5rem; /* 默认图标在前面，所以添加右边距 */
   }
 
   /* 如果图标在后面，则需要调整边距 */
-  [data-icon-position="after"] > i,
   [data-icon-position="after"] > img {
     margin-right: 0; /* 清除默认右边距 */
     margin-left: 0.5rem; /* 添加左边距 */
@@ -64,5 +54,23 @@ const {
   img {
     width: 20px; /*按需调整*/
     height: 20px;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.8;
+  }
+
+  /* 浅色模式下的图标颜色 */
+  :global(.light) img {
+    filter: invert(20%) sepia(10%) saturate(100%) hue-rotate(0deg) brightness(95%) contrast(95%);
+  }
+
+  /* 深色模式下的图标颜色 */
+  :global(.dark) img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+
+  /* 鼠标悬停时的图标颜色变化 */
+  a:hover img {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
   }
 </style>
