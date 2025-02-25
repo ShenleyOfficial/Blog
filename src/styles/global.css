@@ -3,34 +3,34 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* 主色 */
-  --color-primary: #2962ff;
-  --color-primary-light: #73a5ff;
-  --color-primary-dark: #0039cb;
+/* 主色 */
+--color-primary: #3B82F6;         /* 柔和蓝色，醒目但不过分 */
+--color-primary-light: #60A5FA;   /* 更浅的蓝色，用于高亮或渐变 */
+--color-primary-dark: #1D4ED8;    /* 更深的蓝色，用于深色模式或阴影 */
 
-  /* 辅助色 (黄色/橙色系) */
-  --color-secondary: #ffa726;  /* 柔和的橙色 */
-  --color-secondary-light: #ffecb3; /* 更亮的橙色 */
-  --color-secondary-dark: #ffcc80; /* 更暗的橙色 */
+/* 辅助色 */
+--color-secondary: #34C759;       /* 清新绿色，作为次要元素 */
+--color-secondary-light: #6EE7B7; /* 浅绿，用于 hover 或背景 */
+--color-secondary-dark: #15803D;  /* 深绿，增加深度 */
 
-  /* 强调色 (深蓝色，与主色调协调) */
-  --color-accent: #1a237e;  /* 深靛蓝色 */
-  --color-accent-light: #534bae; /* 稍亮的靛蓝色 */
-  --color-accent-dark: #000051; /* 非常深的靛蓝色 */
+/* 强调色 */
+--color-accent: #F59E0B;          /* 明亮橙色，突出重点 */
+--color-accent-light: #FBBF24;    /* 浅橙，用于高亮 */
+--color-accent-dark: #D97706;     /* 深橙，用于深色模式 */
 
-  /* 文本颜色 */
-  --color-text: #212529;
-  --color-text-light: #495057;
-  --color-text-dark: #ffffff;
-  --color-text-secondary: #757575;
-  --color-text-secondary-light: #9e9e9e;
-  --color-text-secondary-dark: #bdbdbd;
+/* 文本颜色 */
+--color-text: #212529;            /* 深灰黑色，浅色模式主要文本 */
+--color-text-dark: #E5E7EB;       /* 浅灰白色，深色模式主要文本 */
+--color-text-secondary: #6B7280;  /* 中灰，浅色模式次要文本 */
+--color-text-secondary-dark: #9CA3AF; /* 浅灰，深色模式次要文本 */
+--color-text-link: #2563EB;       /* 鲜蓝，浅色模式链接 */
+--color-text-link-dark: #60A5FA;  /* 稍浅的蓝，深色模式链接 */
 
-  /* 背景颜色 */
-  --color-background: #ffffff;
-  --color-background-dark: #121212;
-  --color-background-hover: #ffffff;
-  --color-background-hover-dark: #333333;
-  --color-background-secondary: #f0f0f0;
-  --color-background-secondary-dark: #1e1e1e;
+/* 背景颜色 */
+--color-background: #F5F5FA;      /* 浅灰白，柔和的浅色背景 */
+--color-background-dark: #111827; /* 深灰蓝，深色模式背景 */
+--color-background-hover: #FFFFFF; /* 纯白，浅色模式 hover 背景 */
+--color-background-hover-dark: #374151; /* 中灰，深色模式 hover 背景 */
+--color-background-secondary: #E5E7EB; /* 浅灰，浅色次要背景 */
+--color-background-secondary-dark: #1F2937; /* 深灰，深色次要背景 */ 
 }
