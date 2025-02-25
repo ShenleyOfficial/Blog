@@ -1,14 +1,21 @@
 ---
 import NavLink from "./NavLink.astro";
+import MenuButton from "./MenuButton.astro";
 import houseIcon from "../assets/house-solid.svg";
 import listIcon from "../assets/list-solid.svg";
 import folderIcon from "../assets/folder-open-solid.svg";
 import tagsIcon from "../assets/tags-solid.svg";
 import infoIcon from "../assets/circle-info-solid.svg";
+
+let isMenuOpen = false;
 ---
 
-<nav class="flex justify-center items-center">
-  <ul class="list-none flex">
+<nav class="flex justify-center items-center relative w-full">
+  <MenuButton
+    isOpen={isMenuOpen}
+    onClick="document.querySelector('.nav-links').classList.toggle('hidden');"
+  />
+  <ul class="nav-links list-none flex lg:flex-row flex-col lg:relative absolute top-full left-0 w-full lg:w-auto bg-background dark:bg-background-dark lg:bg-transparent lg:dark:bg-transparent hidden lg:flex">
     <NavLink href="/" text="主页" icon={houseIcon} />
     <NavLink href="/posts" text="博客" icon={listIcon} />
     <NavLink href="/categories" text="分类" icon={folderIcon} />
@@ -16,3 +23,17 @@ import infoIcon from "../assets/circle-info-solid.svg";
     <NavLink href="/about" text="关于" icon={infoIcon} />
   </ul>
 </nav>
+
+<style>
+  .nav-links {
+    z-index: 50;
+    transition: all 0.3s ease-in-out;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-links {
+      padding: 1rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+</style>
