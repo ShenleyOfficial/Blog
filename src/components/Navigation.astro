@@ -9,7 +9,7 @@ import infoIcon from "../assets/circle-info-solid.svg";
 
 <nav class="flex justify-center items-center relative w-full">
   <ul
-    class="nav-links list-none lg:flex lg:items-center lg:static lg:w-auto lg:bg-transparent lg:p-0 lg:shadow-none absolute top-full left-0 w-full bg-background dark:bg-background-dark hidden"
+    class="nav-links list-none lg:flex lg:items-center lg:static lg:w-auto lg:bg-transparent lg:p-0 lg:shadow-none absolute top-full left-0 w-full bg-background dark:bg-background-dark"
   >
     <NavLink href="/" text="主页" icon={houseIcon} />
     <NavLink href="/posts" text="博客" icon={listIcon} />
@@ -23,6 +23,14 @@ import infoIcon from "../assets/circle-info-solid.svg";
   .nav-links {
     z-index: 50;
     transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-links {
+      flex-direction: row;
+    }
   }
 
   @media (max-width: 1024px) {

@@ -2,17 +2,13 @@
 import Navigation from "./Navigation.astro";
 import DarkMode from "./DarkMode.astro";
 import MenuButton from "./MenuButton.astro";
-let isMenuOpen = false;
 ---
 
 <header
   class="flex items-center justify-between p-4 bg-background-secondary dark:bg-background-secondary-dark"
 >
   <div class="flex items-center gap-4">
-    <MenuButton
-      isOpen={isMenuOpen}
-      onClick="document.querySelector('.nav-links').classList.toggle('hidden');"
-    />
+    <MenuButton />
     <a
       href="/"
       class="flex-shrink-0 px-4 py-2 text-xl text-primary font-bold hover:text-primary-light hover:bg-background-hover dark:text-primary-dark dark:hover:bg-background-hover-dark rounded transition duration-300 ease-in-out"
@@ -25,8 +21,13 @@ let isMenuOpen = false;
   </div>
 
   <div class="flex items-center">
-    <div class="lg:hidden absolute top-full left-0 w-full">
-      <Navigation />
+    <div
+      id="mobile-nav"
+      class="mobile-nav hidden lg:hidden absolute top-full left-0 w-full bg-background-secondary dark:bg-background-secondary-dark shadow-lg z-50"
+    >
+      <div class="p-4">
+        <Navigation />
+      </div>
     </div>
     <DarkMode />
   </div>
@@ -35,5 +36,10 @@ let isMenuOpen = false;
 <style>
   header {
     position: relative;
+  }
+
+  .mobile-nav {
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
   }
 </style>

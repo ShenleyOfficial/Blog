@@ -1,37 +1,41 @@
 ---
 interface Props {
-  isOpen: boolean;
-  onClick: string;
+  isOpen?: boolean;
 }
 
-const { isOpen, onClick } = Astro.props;
+const { isOpen = false } = Astro.props;
 ---
 
 <button
-  type="button"
-  class="lg:hidden p-2 rounded-md hover:bg-background-hover dark:hover:bg-background-hover-dark transition-colors duration-200"
-  aria-label={isOpen ? "关闭菜单" : "打开菜单"}
-  onclick={onClick}
+  id="menu-button"
+  aria-label="Toggle Menu"
+  class="lg:hidden p-2 rounded-md hover:bg-background-hover dark:hover:bg-background-hover-dark transition duration-300"
 >
-  <div class="w-6 h-5 relative flex flex-col justify-between transform duration-300 ease-in-out">
+  <div class="w-6 h-6 relative">
     <span
       class:list={[
-        "w-full h-0.5 bg-text dark:bg-text-dark rounded-full transform duration-300 ease-in-out",
-        { "rotate-45 translate-y-2": isOpen },
-      ]}
-    ></span>
+        "absolute w-6 h-0.5 bg-text dark:bg-text-dark transition-all duration-300",
+        {
+          "rotate-45 top-3": isOpen,
+          "top-1": !isOpen,
+        },
+      ]}></span>
     <span
       class:list={[
-        "w-full h-0.5 bg-text dark:bg-text-dark rounded-full transform duration-300 ease-in-out",
-        { "opacity-0": isOpen },
-      ]}
-    ></span>
+        "absolute w-6 h-0.5 bg-text dark:bg-text-dark transition-all duration-300",
+        {
+          "opacity-0": isOpen,
+          "top-3": !isOpen,
+        },
+      ]}></span>
     <span
       class:list={[
-        "w-full h-0.5 bg-text dark:bg-text-dark rounded-full transform duration-300 ease-in-out",
-        { "-rotate-45 -translate-y-2": isOpen },
-      ]}
-    ></span>
+        "absolute w-6 h-0.5 bg-text dark:bg-text-dark transition-all duration-300",
+        {
+          "-rotate-45 top-3": isOpen,
+          "top-5": !isOpen,
+        },
+      ]}></span>
   </div>
 </button>
 
@@ -41,3 +45,83 @@ const { isOpen, onClick } = Astro.props;
     outline-offset: 2px;
   }
 </style>
+
+<script>
+  interface MenuState {
+    isOpen: boolean;
+    button: HTMLElement;
+    mobileNav: HTMLElement;
+  }
+
+  function updateButtonState(state: MenuState): void {
+    const spans = state.button.querySelectorAll("span");
+    spans.forEach((span) => {
+      if (state.isOpen) {
+        if (span.classList.contains("top-1")) {
+          span.classList.remove("top-1");
+          span.classList.add("rotate-45", "top-3");
+        } else if (span.classList.contains("top-3")) {
+          span.classList.add("opacity-0");
+        } else if (span.classList.contains("top-5")) {
+          span.classList.remove("top-5");
+          span.classList.add("-rotate-45", "top-3");
+        }
+      } else {
+        span.classList.remove("rotate-45", "-rotate-45", "opacity-0", "top-3");
+        if (span.classList.contains("rotate-45")) {
+          span.classList.add("top-1");
+        } else if (span.classList.contains("opacity-0")) {
+          span.classList.add("top-3");
+        } else {
+          span.classList.add("top-5");
+        }
+      }
+    });
+  }
+
+  function updateMenuState(state: MenuState, open: boolean): void {
+    state.isOpen = open;
+    state.mobileNav.classList.toggle("hidden", !state.isOpen);
+    updateButtonState(state);
+  }
+
+  function init(): void {
+    const button = document.getElementById("menu-button");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    if (!button || !mobileNav) {
+      console.error("Required elements not found!");
+      return;
+    }
+
+    const state: MenuState = {
+      isOpen: false,
+      button,
+      mobileNav,
+    };
+
+    // 处理菜单按钮点击
+    button.addEventListener("click", () => {
+      updateMenuState(state, !state.isOpen);
+    });
+
+    // 处理点击外部关闭菜单
+    document.addEventListener("click", (event) => {
+      const target = event.target as Node;
+      if (
+        !button.contains(target) &&
+        !mobileNav.contains(target) &&
+        state.isOpen
+      ) {
+        updateMenuState(state, false);
+      }
+    });
+  }
+
+  // 等待 DOM 完全加载后再初始化
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>
