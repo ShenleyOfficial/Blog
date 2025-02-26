@@ -5,6 +5,7 @@ import listIcon from "../assets/list-solid.svg";
 import folderIcon from "../assets/folder-open-solid.svg";
 import tagsIcon from "../assets/tags-solid.svg";
 import infoIcon from "../assets/circle-info-solid.svg";
+import linkIcon from "../assets/link-solid.svg";
 ---
 
 <nav class="flex justify-center items-center relative w-full">
@@ -21,6 +22,7 @@ import infoIcon from "../assets/circle-info-solid.svg";
         { href: "/tags", text: "标签", icon: tagsIcon },
       ]}
     />
+    <NavLink href="/friends" text="友链" icon={linkIcon} />
     <NavLink href="/about" text="关于" icon={infoIcon} />
   </ul>
 </nav>
