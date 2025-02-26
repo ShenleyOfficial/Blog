@@ -12,9 +12,15 @@ import infoIcon from "../assets/circle-info-solid.svg";
     class="nav-links list-none lg:flex lg:items-center lg:static lg:w-auto lg:bg-transparent lg:p-0 lg:shadow-none absolute top-full left-0 w-full bg-background dark:bg-background-dark"
   >
     <NavLink href="/" text="主页" icon={houseIcon} />
-    <NavLink href="/posts" text="博客" icon={listIcon} />
-    <NavLink href="/categories" text="分类" icon={folderIcon} />
-    <NavLink href="/tags" text="标签" icon={tagsIcon} />
+    <NavLink
+      href="/posts"
+      text="博客"
+      icon={listIcon}
+      children={[
+        { href: "/categories", text: "分类", icon: folderIcon },
+        { href: "/tags", text: "标签", icon: tagsIcon },
+      ]}
+    />
     <NavLink href="/about" text="关于" icon={infoIcon} />
   </ul>
 </nav>

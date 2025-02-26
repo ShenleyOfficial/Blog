@@ -8,6 +8,7 @@ interface Props {
   iconPosition?: "before" | "after";
   isImage?: boolean;
   alt?: string;
+  children?: any[];
 }
 
 const {
@@ -17,10 +18,11 @@ const {
   iconPosition = "before",
   isImage = true, // 默认值改为true，因为我们现在主要使用SVG图片
   alt = "",
+  children = [],
 } = Astro.props;
 ---
 
-<li>
+<li class="relative group">
   <a
     href={href}
     class="text-text hover:text-text-light hover:bg-background-hover dark:text-text-dark dark:hover:text-text-dark dark:hover:bg-background-hover-dark px-4 py-2 mx-2 my-2 rounded transition duration-300 ease-in-out flex items-center"
@@ -37,7 +39,57 @@ const {
         <img src={typeof icon === "string" ? icon : icon.src} alt={alt} />
       )
     }
+    {
+      children && children.length > 0 && (
+        <svg
+          class="w-4 h-4 ml-1 lg:block hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      )
+    }
   </a>
+  {
+    children && children.length > 0 && (
+      <>
+        {/* 桌面端下拉菜单 */}
+        <ul class="absolute left-0 mt-0 w-48 bg-background-secondary dark:bg-background-secondary-dark rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 lg:block hidden">
+          {children.map((child) => (
+            <li>
+              <a
+                href={child.href}
+                class="block px-4 py-2 text-sm text-text hover:text-text-light hover:bg-background-hover dark:text-text-dark dark:hover:text-text-dark dark:hover:bg-background-hover-dark transition duration-300"
+              >
+                {child.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {/* 移动端展开菜单 */}
+        <ul class="lg:hidden pl-8 space-y-2">
+          {children.map((child) => (
+            <li>
+              <a
+                href={child.href}
+                class="block px-4 py-2 text-sm text-text hover:text-text-light hover:bg-background-hover dark:text-text-dark dark:hover:text-text-dark dark:hover:bg-background-hover-dark transition duration-300 rounded"
+              >
+                {child.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
 </li>
 
 <style>
@@ -60,17 +112,31 @@ const {
 
   /* 浅色模式下的图标颜色 */
   :global(.light) img {
-    filter: invert(20%) sepia(10%) saturate(100%) hue-rotate(0deg) brightness(95%) contrast(95%);
+    filter: invert(20%) sepia(10%) saturate(100%) hue-rotate(0deg)
+      brightness(95%) contrast(95%);
   }
 
   /* 深色模式下的图标颜色 */
   :global(.dark) img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+      brightness(100%) contrast(100%);
   }
 
   /* 鼠标悬停时的图标颜色变化 */
   a:hover img {
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
+  }
+
+  /* 子菜单定位 */
+  .group:hover > ul {
+    top: 100%;
+  }
+
+  /* 移动端子菜单样式 */
+  @media (max-width: 1024px) {
+    .group {
+      width: 100%;
+    }
   }
 </style>
