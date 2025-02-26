@@ -1,18 +1,39 @@
 ---
 import Navigation from "./Navigation.astro";
 import DarkMode from "./DarkMode.astro";
+import MenuButton from "./MenuButton.astro";
+let isMenuOpen = false;
 ---
 
 <header
-  class="relative flex justify-center items-center p-5 bg-background-secondary dark:bg-background-secondary-dark"
+  class="flex items-center justify-between p-4 bg-background-secondary dark:bg-background-secondary-dark"
 >
-  <a
-    href="/"
-    class="px-4 py-2 left-5 absolute text-xl text-primary font-bold hover:text-primary-light hover:bg-background-hover dark:text-primary-dark dark:hover:bg-background-hover-dark rounded transition duration-300 ease-in-out"
-    >ShenleyのBlog</a
-  >
-  <Navigation />
-  <DarkMode />
+  <div class="flex items-center gap-4">
+    <MenuButton
+      isOpen={isMenuOpen}
+      onClick="document.querySelector('.nav-links').classList.toggle('hidden');"
+    />
+    <a
+      href="/"
+      class="flex-shrink-0 px-4 py-2 text-xl text-primary font-bold hover:text-primary-light hover:bg-background-hover dark:text-primary-dark dark:hover:bg-background-hover-dark rounded transition duration-300 ease-in-out"
+      >ShenleyのBlog</a
+    >
+  </div>
+
+  <div class="hidden lg:block absolute left-1/2 -translate-x-1/2">
+    <Navigation />
+  </div>
+
+  <div class="flex items-center">
+    <div class="lg:hidden absolute top-full left-0 w-full">
+      <Navigation />
+    </div>
+    <DarkMode />
+  </div>
 </header>
 
-<style></style>
+<style>
+  header {
+    position: relative;
+  }
+</style>
