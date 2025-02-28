@@ -1,7 +1,7 @@
 {
     "name": "Shenley",
-    "avatar": "https://ykrazy.top/avatar.png",
-    "description": "示例",
+    "avatar": "/src/assets/avatar.png",
+    "description": "从小的梦想是，当大牛 !",
     "url": "https://ykrazy.top",
     "backgroundColor": "#000000",
     "textColor": "#ffffff"
