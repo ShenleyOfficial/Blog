@@ -14,4 +14,16 @@ const blog = defineCollection({
     tags: z.array(z.string()).optional(),
   }),
 });
-export const collections = { blog };
+
+const friends = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/friends" }),
+  schema: z.object({
+    name: z.string(),
+    avatar: z.string(),
+    description: z.string(),
+    url: z.string().url(),
+    backgroundColor: z.string().optional(),
+    textColor: z.string().optional(),
+  }),
+});
+export const collections = { blog, friends };
