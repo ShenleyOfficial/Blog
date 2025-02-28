@@ -1,15 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import FriendCard from "../../components/FriendCard.astro";
+import FriendCard from "../../components/FriendCard.jsx";
+import { getCollection } from "astro:content";
 
-const friends = [
-  {
-    name: "例",
-    avatar: "#" ,
-    description: "test",
-    url: "#",
-  },
-];
+const friends = await getCollection("friends");
 ---
 
 <Layout>
@@ -20,7 +14,7 @@ const friends = [
       友情链接
     </h1>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {friends.map((friend) => <FriendCard {...friend} />)}
+      {friends.map((friend) => <FriendCard name={friend.data.name} avatar={friend.data.avatar} description={friend.data.description} url={friend.data.url} />)}
     </div>
 
     <div
